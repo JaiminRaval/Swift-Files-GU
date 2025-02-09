@@ -1,4 +1,4 @@
-// Demonstrates all Swift access modifiers using a simple Library system
+// Here i'll be demonstrating all Swift access modifiers using a simple Library system
 
 // open: Most accessible - allows inheritance and override outside the module
 open class Book {
