@@ -40,3 +40,32 @@ extension House {
         // squareFeet += additionalSquareFeet
     }
 }
+
+//  extension & computed properties task:
+//  create struct "Song" with title, artist, duration. create init for it.
+//  create class "Playlsit" with noOfSongs.
+//  create an extension for playlist which have computed property: called: duration.
+struct Song {
+    var title: String
+    var artist: String
+    var duration: Double
+}
+
+class Playlist {
+    var name: String
+    var numberOfSongs: [Song]
+
+    init(name: String, numberOfSongs: [Song]) {
+        self.name = name
+        self.numberOfSongs = numberOfSongs
+    }
+}
+extension Playlist {
+    var playlistDuration: Double {
+        var total: Double = 0.0
+        for song in self.numberOfSongs {
+            total += song.duration
+        }
+        return total
+    }
+}
