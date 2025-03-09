@@ -16,7 +16,7 @@ struct Movie {
 }
 
 // Create an array of 50 diverse movies (Hollywood and Bollywood)
-let movies: [Movie] = [
+let allMovies: [Movie] = [
     // Hollywood Movies
     Movie(
         title: "Frozen", genre: "Animation", region: "Hollywood", mood: "Whimsical",
@@ -171,78 +171,3 @@ let movies: [Movie] = [
         title: "Kaho Naa Pyaar Hai", genre: "Romance", region: "Bollywood", mood: "Romantic",
         relatedFlavors: ["Strawberry", "Vanilla"]),
 ]
-
-// Function to recommend movies based on ice cream flavor
-func recommendMovies(iceCreamFlavor: String, favoriteMovie: String) -> [Movie] {
-    var recommendations: [Movie] = []
-
-    // Step 1: Look for direct matches with the ice cream flavor
-    let directMatches = movies.filter { movie in
-        let containsFlavor = movie.relatedFlavors.contains { flavor in
-            flavor.lowercased().contains(iceCreamFlavor.lowercased())
-                || iceCreamFlavor.lowercased().contains(flavor.lowercased())
-        }
-
-        // Exclude the favorite movie from recommendations
-        return containsFlavor && movie.title.lowercased() != favoriteMovie.lowercased()
-    }
-
-    // Step 2: Try to find movies similar to their favorite movie
-    let favoriteMovieMatch = movies.first { $0.title.lowercased() == favoriteMovie.lowercased() }
-    var similarMovies: [Movie] = []
-
-    if let match = favoriteMovieMatch {
-        // Find movies with the same genre or mood
-        similarMovies = movies.filter { movie in
-            (movie.genre == match.genre || movie.mood == match.mood)
-                && movie.title.lowercased() != favoriteMovie.lowercased()
-        }
-    }
-
-    // Step 3: Combine and limit results
-    recommendations = Array(Set(directMatches + similarMovies))
-
-    // Ensure we have at least 3 recommendations
-    if recommendations.count < 3 {
-        // Add random movies to make up the difference
-        let randomMovies = movies.filter { movie in
-            movie.title.lowercased() != favoriteMovie.lowercased()
-                && !recommendations.contains { $0.title == movie.title }
-        }.shuffled()
-
-        recommendations.append(contentsOf: randomMovies.prefix(3 - recommendations.count))
-    }
-
-    // Return top 5 recommendations (or fewer if less are available)
-    return Array(recommendations.prefix(5))
-}
-
-// Main function
-func main() {
-    print("==== Movie Recommendation System ====")
-
-    // Get user input
-    let iceCreamFlavor = getUserInput(prompt: "Enter your favorite ice cream flavor: ")
-    let favoriteMovie = getUserInput(prompt: "Enter your favorite movie: ")
-
-    // Get recommendations
-    let recommendations = recommendMovies(
-        iceCreamFlavor: iceCreamFlavor, favoriteMovie: favoriteMovie)
-
-    // Display recommendations
-    print(
-        "\nBased on your love for \(iceCreamFlavor) ice cream and \(favoriteMovie), we recommend:")
-    print("------------------------------------------")
-
-    for (index, movie) in recommendations.enumerated() {
-        print("\(index + 1). \(movie.title) (\(movie.region))")
-        print("   Genre: \(movie.genre)")
-        print("   Mood: \(movie.mood)")
-        print("")
-    }
-
-    print("Enjoy watching! 🍿")
-}
-
-// Run the program
-main()
