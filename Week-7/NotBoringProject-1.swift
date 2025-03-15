@@ -200,7 +200,7 @@ func recommendMovies(iceCreamFlavor: String, favoriteMovie: String) -> [Movie] {
     }
 
     // Step 3: Combine and limit results
-    recommendations = Array(Set(directMatches + similarMovies))
+    //recommendations = Array(Set(directMatches + similarMovies))
 
     // Ensure we have at least 3 recommendations
     if recommendations.count < 3 {
