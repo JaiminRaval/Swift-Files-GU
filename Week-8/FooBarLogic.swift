@@ -18,5 +18,7 @@
 
 //  Func Signature
 func getFizzBuzz(n: Int) -> [String] {
+    var answer: [String] = []
 
+    return answer
 }
