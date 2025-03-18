@@ -18,5 +18,11 @@
 //
 
 func isPalindrome(x: Int) -> Bool {
-
+    let str = String(x)
+    let rev = String(str.reversed())
+    if str == rev {
+        return true
+    } else {
+        return false
+    }
 }
