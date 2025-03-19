@@ -17,7 +17,7 @@
 func TwoSum(nums: [Int], target: Int) -> [Int] {
     var ans: [Int] = []
     let len = nums.count
-    print(len)
+    //print(len)    // for debugging and finding that .count returns count in natural number i.e, starts from 1!
     for i in Range(0...(len - 2)) {
         if nums[i] + nums[i + 1] == target {
             ans.append(i)

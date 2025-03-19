@@ -6,7 +6,7 @@
 //          answer[i] == "FizzBuzz" IF 'i' is dvisible by 3 and 5
 //          answer[i] == "Fizz" IF 'i' is dvisible by 3
 //          answer[i] == "Buzz" IF 'i' is dvisible by 5
-//          answer[i] == "\(i)" IF of the above conditions are true
+//          answer[i] == "\(i)" IF none of the above conditions are true
 //
 //  Example-1:
 //  Func Input: n = 3
