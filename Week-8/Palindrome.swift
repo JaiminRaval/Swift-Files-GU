@@ -10,7 +10,7 @@
 //
 //  Example-2:
 //  Func Input: x = -121
-//  Func Oputput: false
+//  Func Output: false
 //
 //  Example-2:
 //  Func Input: x = 10
