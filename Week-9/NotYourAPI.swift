@@ -1,4 +1,5 @@
 import Foundation
+import FoundationNetworking
 
 //"https://official-joke-api.appspot.com/jokes/random/25"
 
@@ -48,6 +49,9 @@ func fetchJokes() {
     }
 
 }
+
+fetchJokes()
+RunLoop.main.run()
 
 //  Current API: https://official-joke-api.appspot.com/jokes/random/25
 //  More similar APIs: https://github.com/15Dkatz/official_joke_api
